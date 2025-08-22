@@ -69,10 +69,10 @@ const importFile = async ({ url, name, alternativeText, caption }, user) => {
   let file;
   try {
     file = await fetchFile(url);
-    console.log(file);
+    console.log('new attempt');
     let [uploadedFile] = await strapi
-      .plugin('upload')
-      .service('upload')
+      .plugins.upload.services
+      .upload
       .upload(
         {
           files: {

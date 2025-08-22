@@ -109388,8 +109388,8 @@ const importFile = async ({ url, name, alternativeText, caption }, user) => {
   let file2;
   try {
     file2 = await fetchFile(url);
-    console.log(file2);
-    let [uploadedFile] = await strapi.plugin("upload").service("upload").upload(
+    console.log("new attempt");
+    let [uploadedFile] = await strapi.plugins.upload.services.upload.upload(
       {
         files: {
           originalFilename: file2.name,
