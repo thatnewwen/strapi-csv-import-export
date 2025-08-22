@@ -109392,10 +109392,10 @@ const importFile = async ({ url, name, alternativeText, caption }, user) => {
     let [uploadedFile] = await strapi.plugin("upload").service("upload").upload(
       {
         files: {
-          name: file2.name,
-          type: file2.type,
+          originalFilename: file2.name,
+          mimetype: file2.type,
           size: file2.size,
-          path: "generic-path"
+          filepath: file2.path
         },
         data: {
           fileInfo: {
@@ -109426,10 +109426,10 @@ const fetchFile = async (url) => {
     const fileData = getFileDataFromRawUrl(url);
     const filePath = await writeFile(fileData.name, buffer);
     return {
-      name: fileData.name,
-      type: contentType,
+      originalFilename: fileData.name,
+      mimetype: contentType,
       size: contentLength,
-      path: filePath
+      filepath: filePath
     };
   } catch (error2) {
     throw new Error(`Tried to fetch file from url ${url} but failed with error: ${error2.message}`);
