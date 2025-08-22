@@ -79,7 +79,7 @@ const importFile = async ({ url, name, alternativeText, caption }, user) => {
             name: file.name,
             type: file.type,
             size: file.size,
-            path: 'generic-path',
+            filepath: file.path,
           },
           data: {
             fileInfo: {
