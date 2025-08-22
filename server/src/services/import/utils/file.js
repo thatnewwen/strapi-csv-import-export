@@ -69,7 +69,7 @@ const importFile = async ({ url, name, alternativeText, caption }, user) => {
   let file;
   try {
     file = await fetchFile(url);
-
+    console.log(file);
     let [uploadedFile] = await strapi
       .plugin('upload')
       .service('upload')
@@ -79,7 +79,7 @@ const importFile = async ({ url, name, alternativeText, caption }, user) => {
             name: file.name,
             type: file.type,
             size: file.size,
-            path: file.path,
+            path: 'generic-path',
           },
           data: {
             fileInfo: {
